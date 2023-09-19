@@ -22,10 +22,6 @@ spring:
               - OPTIONS
             allowedHeaders: "*"
       routes:
-        - id: auth-main-service
-          uri: "lb://AUTH-MAIN-SERVICE"
-          predicates:
-              - Path=/api/v1/authmain/**
         - id: auth-service
           uri: "lb://AUTH-SERVICE"
           predicates:
@@ -42,6 +38,15 @@ spring:
           uri: "lb://CUSTOMER-SERVICE"
           predicates:
             - Path=/api/v1/customer/**
+        - id: amenity-service
+          uri: "lb://AMENITY-SERVICE"
+          predicates:
+            - Path=/api/v1/amenity/**
+        - id: order-command-service
+          uri: "lb://ORDER-COMMAND-SERVICE"
+          predicates:
+            - Path=/api/v1/payment/**
+
 
 management:
   endpoints:
